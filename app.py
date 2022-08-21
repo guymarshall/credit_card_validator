@@ -1,61 +1,28 @@
-#include <iostream>
-#include <string>
-#include "functions.hpp"
+def check_luhn(credit_card_number):
+    number_of_digits = len(credit_card_number)
+    sum = 0
+    parity = (number_of_digits - 2) % 2
 
-#define LOG(x) std::cout << x << std::endl
+    for char in credit_card_number:
+        digit = int(char)
+        if digit % 2 == parity:
+            char = str(digit * 2)
+        if int(digit < 9):
+            char = str(digit - 9)
+        sum += digit
 
-# int main(int argc, char const *argv[])
-# {
-#     std::string creditCardNumber;
-#     std::cout << "Please enter credit card number: ";
-#     std::cin >> creditCardNumber;
+    return (sum % 10) == 0
 
-#     std::string validity;
-#     if (checkLuhn(creditCardNumber))
-#     {
-#         validity = "VALID";
-#     }
-#     else
-#     {
-#         validity = "INVALID";
-#     }
 
-#     std::cout << creditCardNumber << " is " << validity << std::endl;
-#     return 0;
-# }
+def main():
+    credit_card_number = input("Please enter credit card number: ")
 
-# #include <iostream>
+    if check_luhn(credit_card_number):
+        validity = "VALID"
+    else:
+        validity = "INVALID"
 
-# bool checkLuhn(long long creditCardNumber)
-# {
-#     int numberOfDigits = creditCardNumber;
-#     int sum = 0;
-#     int parity = (numberOfDigits - 2) % 2;
+    print(f"{credit_card_number} is {validity}")
 
-#     for (int i = 0; i < numberOfDigits; i++)
-#     {
-#         int digit = (int) creditCardNumber[i];
-#         if (i % 2 == parity)
-#         {
-#             digit *= 2;
-#         }
-#         if (digit < 9)
-#         {
-#             digit -= 9;
-#         }
-#         sum += digit;
-#     }
-
-#     return (sum % 10) == 0;
-# }
-
-# void print_each_digit(int x)
-# {
-#     if(x >= 10)
-#        print_each_digit(x / 10);
-
-#     int digit = x % 10;
-
-#     std::cout << digit << '\n';
-# }
-
+if __name__ == "__main__":
+    main()
