@@ -15,17 +15,14 @@ def check_luhn(credit_card_number):
 
 
 def main():
-    # credit_card_number = input("Please enter credit card number: ")
+    credit_card_number = input("Please enter credit card number: ")
 
-    numbers = ["371449635398431", "30569309025904", "6011111111111117", "3530111333300000", "5555555555554444", "4111111111111111"]
+    if check_luhn(credit_card_number):
+        validity = "VALID"
+    else:
+        validity = "INVALID"
 
-    for number in numbers:
-        if check_luhn(number):
-            validity = "VALID"
-        else:
-            validity = "INVALID"
-
-        print(f"{number} is {validity}")
+    print(f"{credit_card_number} is {validity}")
 
 if __name__ == "__main__":
     main()
