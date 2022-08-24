@@ -1,6 +1,6 @@
 def check_luhn(credit_card_number):
     number_of_digits = len(credit_card_number)
-    sum = 0
+    total = 0
     parity = (number_of_digits - 2) % 2
 
     for char in credit_card_number:
@@ -9,9 +9,9 @@ def check_luhn(credit_card_number):
             char = str(digit * 2)
         if int(digit < 9):
             char = str(digit - 9)
-        sum += digit
+        total += digit
 
-    return (sum % 10) == 0
+    return (total % 10) == 0
 
 
 def main():
